@@ -12,4 +12,4 @@ class SchemaChecker:
             table_obj = self.client.get_table(full_table_id)
             print(f"\n Table:{table.table_id}")
             for field in table_obj.schema:
-                print(f" - {field.name} ({field.field_type})")
+                print(f"{field.name}:{field.field_type}")
