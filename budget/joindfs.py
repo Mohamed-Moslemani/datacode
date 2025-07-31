@@ -16,7 +16,7 @@ def join_campaign_with_budget_bq(project_id: str, dataset_id: str,campaign_table
        AND c.Audience=b.Audience
        AND c.Channel= b.Channel
        AND c.Month=b.Month
-       AND IFNULL(c.Route, 'NA')=IFNULL(b.Route, 'NA')
+       AND COALESCE(NULLIF(c.Route, 'nan'), 'NA') = COALESCE(NULLIF(b.Route, 'nan'), 'NA')
        AND DATE(c.Date)= DATE(b.Date)
     """
 

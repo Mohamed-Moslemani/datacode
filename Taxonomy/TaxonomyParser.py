@@ -12,7 +12,7 @@ class TaxonomyParser:
             "Audience": {"Expats","Locals","Business", "Leisure"},
             "Channel": {"Search","Display", "Social","Video"},
             "Month": {"Jan","Feb"},
-            "Route": re.compile(r"^[A-Z]{3}-[A-Z]{3}$|^NA$")
+            "Route": re.compile(r"^[A-Z]{3}-[A-Z]{3}$")
         }
 
     def parse_row(self, campaign):
@@ -49,11 +49,11 @@ class TaxonomyParser:
 
         result.update({
             "BusinessUnit": bu,
-            "Objective": obj,
-            "Market": market,
-            "Language": lang,
+            "Objective":obj,
+            "Market":market,
+            "Language":lang,
             "Audience": aud,
-            "Channel": ch,
+            "Channel":ch,
             "Month": month,
             "Route": route,
             "Validity": valid
@@ -62,4 +62,4 @@ class TaxonomyParser:
 
     def parse_dataframe(self,df,column="Campaign_Name"):
         parsed = df[column].apply(self.parse_row).apply(pd.Series)
-        return pd.concat([df.reset_index(drop=True),parsed], axis=1)
+        return pd.concat([df.reset_index(drop=True),parsed],axis=1)
