@@ -6,6 +6,7 @@ from Taxonomy import TaxonomyRunner
 import os 
 from Vars import project_id,dataset_id
 from budget import joindfs, cpa, pacingPercent
+
 ####GCP LOADER THAT LOADED THE DATA IMTO THE BQ. THIS WAS THE FIRST RUN. 
 ###each csv file is on its own table
 # gcp_loader = Gcp(
@@ -60,11 +61,20 @@ from budget import joindfs, cpa, pacingPercent
 #     output_table="campaign_budget_joined"
 # )
 
-joinedf= "campaign_budget_joined"
+#______________________________________________________
+####COMPUTING PACING AND CPA AS REQUESTED THE ROAS CANNOT BE COMPUTED AS NO REVENUE IS FOUND AND REVENUE CANNOT BE COMPUTED OF HTE AVAILABLE PREDICTORS
+# joinedf= "campaign_budget_joined"
 
-cpa.compute_cpa(
-    project_id="assessment-exercise1",
-    dataset_id="Exercise1Data",
-    input_table=joinedf,
-    output_table=joinedf
-)
+# pacingPercent.compute_pacing_percent(
+#     project_id="assessment-exercise1",
+#     dataset_id="Exercise1Data",
+#     input_table=joinedf,
+#     output_table=joinedf
+# )
+
+# cpa.compute_cpa(
+#     project_id="assessment-exercise1",
+#     dataset_id="Exercise1Data",
+#     input_table=joinedf,
+#     output_table=joinedf
+# )
